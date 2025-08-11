@@ -2,8 +2,25 @@
 
 {% block title %}
 Chai Page
-{% endblock  %}
+{% endblock %}
 
 {% block content %}
-<h1>All types of chai available</h1>
+<h1 class="text-2xl text-center font-bold mb-4">All types of chai available</h1>
+
+<!-- Create 3 equal-width columns with gap -->
+<div class="grid grid-cols-3 gap-6 m-4">
+    {% for chai in chais %}
+    <div class="chai-item bg-blue-900 p-5 flex flex-col items-center rounded-lg shadow-lg">
+        <img src="{{ chai.image.url }}" alt="{{ chai.name }}" class="w-full h-auto object-cover rounded-lg">
+        <h2 class="mt-2 text-lg font-medium text-center">{{ chai.name }}</h2>
+
+        <!-- Link styled as button -->
+        <a href="{% url 'chai_detail' chai.id %}" 
+           class="mt-3 px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-black font-medium rounded transition">
+            View Description
+        </a>
+    </div> 
+    {% endfor %}
+</div>
+
 {% endblock content %}
