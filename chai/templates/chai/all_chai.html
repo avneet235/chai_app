@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %}All Chai Varieties{% endblock %}
+
+{% block content %}
+<section class="max-w-7xl mx-auto px-4 py-12">
+    <h1 class="text-3xl font-bold text-center mb-8 text-yellow-400">Our Chai Collection</h1>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {% for chai in chais %}
+        <div class="bg-[#222] rounded-xl shadow-lg overflow-hidden hover:scale-105 transition transform duration-300">
+            <img src="{{ chai.image.url }}" alt="{{ chai.name }}" class="w-full h-56 object-cover">
+            <div class="p-5">
+                <h2 class="text-xl font-semibold mb-2">{{ chai.name }}</h2>
+                <a href="{% url 'chai_detail' chai.id %}" 
+                   class="block mt-4 w-full text-center bg-yellow-500 hover:bg-yellow-600 text-black font-medium py-2 px-4 rounded transition">
+                    View Description
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
